@@ -1,4 +1,4 @@
-package com.mobxprojrct;
+package com.mobxRNProject;
 
 import android.app.Application;
 
