@@ -5,15 +5,19 @@ import {
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import Counter from './../../components/Counter';
+import HeaderBar from './../../common/HeaderBar';
 
 
 
 @inject('CounterStore')
 @observer
 export default class Home extends Component {
-    static navigationOptions = {
+    static params = {
+        Image: require('../../assets/tabs/home.png'),
+        msg: '圈子',
         header: null
     };
+    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, Home.params);
     constructor(props) {
         super(props);
         this.goThings = this.goThings.bind(this);

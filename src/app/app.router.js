@@ -25,20 +25,20 @@ const bottomNav = createBottomTabNavigator(
         Me: MeStack
     },
     {
-        defaultNavigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ focused, horizontal, tintColor }) => {
-                const { routeName } = navigation.state;
-                let uri = '';
-                if (routeName === 'Home') {
-                    uri = require('../assets/tabs/home.png');
-                } else if (routeName === 'About') {
-                    uri = require('../assets/tabs/about.png');
-                } else if (routeName === 'Me') {
-                    uri = require('../assets/tabs/me.png');
-                }
-                return <Image style={{ width: 25, height: 25, tintColor: focused ? '#f00' : tintColor }} source={uri} />;
-            },
-        }),
+        // defaultNavigationOptions: ({ navigation }) => ({
+        //     tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        //         const { routeName } = navigation.state;
+        //         let uri = '';
+        //         if (routeName === 'Home') {
+        //             uri = require('../assets/tabs/home.png');
+        //         } else if (routeName === 'About') {
+        //             uri = require('../assets/tabs/about.png');
+        //         } else if (routeName === 'Me') {
+        //             uri = require('../assets/tabs/me.png');
+        //         }
+        //         return <Image style={{ width: 25, height: 25, tintColor: focused ? '#f00' : tintColor }} source={uri} />;
+        //     },
+        // }),
         tabBarOptions: {
             activeTintColor: '#f00',
             inactiveTintColor: 'gray',

@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { observer, inject } from 'mobx-react';
+import HeaderBar from './../../common/HeaderBar';
 
 @inject('BaseStore', 'CounterStore')
 @observer
 export default class Me extends Component {
-    static navigationOptions = {
+
+    static params = {
+        Image: require('../../assets/tabs/me.png'),
+        msg: '圈子',
         header: null
     };
+    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, Me.params);
     constructor(props) {
         super(props);
 

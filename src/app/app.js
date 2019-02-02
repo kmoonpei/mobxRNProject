@@ -3,7 +3,6 @@ import Router from './app.router';
 import { Provider } from 'mobx-react';
 import NavigationStore from 'react-navigation-mobx-helpers';
 import { RootStore } from '../store';
-// import { BaseStore } from './../store/baseStore';
 
 const store = new RootStore();
 const rootNavigation = new NavigationStore();
