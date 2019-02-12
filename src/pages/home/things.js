@@ -6,9 +6,9 @@ import HeaderBar from './../../common/HeaderBar';
 
 export default class Things extends Component {
     static params = {
-        title: 'Things',
+        title: 'Things'
     };
-    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, Things.params);
+    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, Things.params, navigation);
     constructor(props) {
         super(props);
 

@@ -12,7 +12,7 @@ export default class Me extends Component {
         msg: '圈子',
         header: null
     };
-    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, Me.params);
+    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, Me.params, navigation);
     constructor(props) {
         super(props);
 

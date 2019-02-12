@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, Text, StyleSheet, Button
+    View, Text, StyleSheet, Button, Image
 } from 'react-native';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
@@ -13,11 +13,12 @@ import HeaderBar from './../../common/HeaderBar';
 @observer
 export default class Home extends Component {
     static params = {
-        Image: require('../../assets/tabs/home.png'),
+        Image: require('./../../assets/tabs/home.png'),
         msg: '圈子',
         header: null
     };
-    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, Home.params);
+    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, Home.params, navigation);
+
     constructor(props) {
         super(props);
         this.goThings = this.goThings.bind(this);

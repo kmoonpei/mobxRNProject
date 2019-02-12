@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import Number from './../../components/Number';
+import Num from './../../components/Number';
 import { inject, observer } from 'mobx-react';
 import HeaderBar from './../../common/HeaderBar';
 
@@ -8,10 +8,9 @@ export default class About extends Component {
 
     static params = {
         Image: require('../../assets/tabs/about.png'),
-        msg: '圈子',
         header: null
     };
-    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, About.params);
+    static navigationOptions = ({ navigation, screenProps }) => HeaderBar(screenProps, About.params, navigation);
     constructor(props) {
         super(props);
 
@@ -20,7 +19,7 @@ export default class About extends Component {
         return (
             <View style={styles.bg}>
                 <Text>About</Text>
-                <Number />
+                <Num />
             </View>
         )
     }

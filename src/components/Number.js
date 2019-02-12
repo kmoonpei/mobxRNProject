@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
 import { observer, inject } from 'mobx-react';
 
 
 @inject('BaseStore')
-@observer export default class Number extends Component {
+@observer export default class Num extends Component {
     constructor(props) {
         super(props);
     }
@@ -21,6 +21,19 @@ import { observer, inject } from 'mobx-react';
                         <Button style={styles.btn} onPress={this.handleDec} title={'-'} />
                     </View>
                 </View>
+                <Text>Name:</Text>
+                <TextInput
+                    style={{ height: 40, borderColor: '#aaa', borderWidth: 1 }}
+                    onChangeText={this.changeName}
+                    value={BaseStore.name} />
+                <Text>Age:</Text>
+                <TextInput
+                    style={{ height: 40, borderColor: '#aaa', borderWidth: 1 }}
+                    onChangeText={this.changeAge}
+                    keyboardType={'number-pad'}
+                    value={BaseStore.age + ''} />
+                <Text>Name:{BaseStore.name}</Text>
+                <Text>Age:{BaseStore.age}</Text>
             </View>
         )
     }
@@ -31,6 +44,14 @@ import { observer, inject } from 'mobx-react';
     handleDec = () => {
         let { BaseStore } = this.props;
         BaseStore.decrement();
+    }
+    changeName = (text) => {
+        let { BaseStore } = this.props;
+        BaseStore.name = text;
+    }
+    changeAge = (text) => {
+        let { BaseStore } = this.props;
+        BaseStore.setAge(Number(text))
     }
 }
 
