@@ -9,6 +9,9 @@ import { observer, inject } from 'mobx-react';
     constructor(props) {
         super(props);
     }
+    componentWillReact() {
+        console.warn(`counter changed ${this.props.CounterStore.count}`)
+    }
     render() {
         let { CounterStore } = this.props;
         return (

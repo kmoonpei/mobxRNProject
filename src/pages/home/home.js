@@ -25,7 +25,7 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        console.warn('number:', this.props)
+        // console.warn('number:', this.props)
     }
     goThings() {
         let { navigate } = this.props.navigation;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
 import { observer, inject } from 'mobx-react';
+import { computed } from 'mobx';
 
 
 @inject('BaseStore')
@@ -8,11 +9,14 @@ import { observer, inject } from 'mobx-react';
     constructor(props) {
         super(props);
     }
+    @computed get name() {
+        return this.props.BaseStore.name;
+    }
     render() {
         let { BaseStore } = this.props;
         return (
             <View style={styles.Number}>
-                <Text>Number:{BaseStore.number}</Text>
+                <Text>Number:{BaseStore.getNum}</Text>
                 <View style={styles.btns_wap}>
                     <View style={styles.btn_wap}>
                         <Button style={styles.btn} onPress={this.handleInc} title={'+'} />
@@ -25,7 +29,7 @@ import { observer, inject } from 'mobx-react';
                 <TextInput
                     style={{ height: 40, borderColor: '#aaa', borderWidth: 1 }}
                     onChangeText={this.changeName}
-                    value={BaseStore.name} />
+                    value={this.name} />
                 <Text>Age:</Text>
                 <TextInput
                     style={{ height: 40, borderColor: '#aaa', borderWidth: 1 }}
@@ -34,6 +38,10 @@ import { observer, inject } from 'mobx-react';
                     value={BaseStore.age + ''} />
                 <Text>Name:{BaseStore.name}</Text>
                 <Text>Age:{BaseStore.age}</Text>
+                <Text>Total:{BaseStore.total}</Text>
+                <Button style={styles.btn_mrg} onPress={this.fetchName} title={'获取名字'} />
+                <Button style={styles.btn_mrg} onPress={this.fecthCont} title={'随机获取Num'} />
+
             </View>
         )
     }
@@ -51,7 +59,15 @@ import { observer, inject } from 'mobx-react';
     }
     changeAge = (text) => {
         let { BaseStore } = this.props;
-        BaseStore.setAge(Number(text))
+        BaseStore.setAge(Number(text));
+    }
+    fetchName = () => {
+        let { BaseStore } = this.props;
+        BaseStore.fetchSomething();
+    }
+    fecthCont = () => {
+        let { BaseStore } = this.props;
+        BaseStore.fecthCont();
     }
 }
 
@@ -73,5 +89,8 @@ const styles = StyleSheet.create({
     },
     btn: {
         width: '100%',
+    },
+    btn_mrg: {
+        marginTop: 5,
     },
 })
